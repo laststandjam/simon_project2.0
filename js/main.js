@@ -10,10 +10,13 @@ var red = document.getElementById("red")
 var yellow = document.getElementById("yellow")
 var green = document.getElementById("green")
 var blue = document.getElementById("blue")
+var rounds = document.getElementById("rounds")
+var startButton=document.getElementById("gameStart")
+var headerText = document.getElementById("gameMessage")
 //state
 let currentPattern,
     playerPattern,
-    rounds
+    roundCounter;
 
 
 //listernes
@@ -21,18 +24,20 @@ red.addEventListener("click", track)
 yellow.addEventListener("click", track)
 green.addEventListener("click", track)
 blue.addEventListener("click", track)
+startButton.addEventListener("click",startGame )
 
 //functions
-    init()
+   
+init()
 function init() {
     currentPattern = []
     playerPattern = []
-    rounds = 0
+    roundCounter = 0
 }
 function newGame() {
     currentPattern = []
     playerPattern = []
-    rounds = 0
+    roundCounter = 1
 }
 function randomizer(){
     let i = Math.floor(Math.random() * colors.length)
@@ -57,14 +62,15 @@ function track(){
     }
 }
 function updateRounds(){
-    ++rounds
-    $(`#rounds`).html = rounds
+    ++roundCounter
+    rounds.innerText = roundCounter
 }
 function judger(){
     if(currentPattern.length === playerPattern.length)
         for(let i =0; i<playerPattern.length; i++){
             if( playerPattern[i] !== currentPattern[i])
-            console.log("you lose")
+           headerText.innerText ="You lose Press Start to play again"
+           
             }
             playerPattern= []
             updateRounds()
@@ -72,8 +78,8 @@ function judger(){
             blinker()
     }
 function startGame(){
+    headerText.innerText= "Follow The Colors"
     updateRounds()
     randomizer()
     blinker()
 }
-startGame()

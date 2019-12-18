@@ -14,12 +14,14 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 7px;
+  justify-content: center;
 }
 #red {
   display: flex;
   background-color: rgb(255, 32, 77);
   border-radius: 55%;
   width: 300px;
+  margin-left: 75px;
 }
 #green {
     background-color: limegreen;
@@ -31,11 +33,13 @@ h1 {
   background: gold;
   border-radius: 55%;
   width: 300px;
+  margin-left: 160px;
 }
 #blue {
   background: skyblue;
   border-radius: 55%;
   width: 300px;
+  margin-left: 75px;
 }
 #blue:active{
     background-color: blue
