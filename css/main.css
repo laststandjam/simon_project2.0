@@ -1,49 +1,51 @@
 body {
-    text-align: center;
-    background: black
-  }
-  h1 {
-    color: white;
-  }
-  .container {
-    width: auto;
-    height: 600px;
-    margin-top: 40px;
-    display: grid;
-    padding: 10px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 7px;
-   
-  
-  }
-  #red {
-    display: flex;
-    background-color:  firebrick;
-    border-radius: 55%;
-    width: 300px;
-    opacity : 0.6;
-    
-  }
-  #green {
-    background: forestgreen;
-    border-radius: 55%;
-    width: 300px;
-    opacity : 0.6;
-    
-  }
-  
-  #yellow {
-    background: gold;
-    border-radius: 55%;
-    width: 300px;
-    opacity : 0.6;
-    
-  }
-  #blue {
-    background: skyblue;
-    border-radius: 55%;
-    width: 300px;
-    opacity : 0.6;
-  }
- 
+  text-align: center;
+  background: black;
+}
+h1 {
+  color: white;
+}
+.container {
+  width: auto;
+  height: 600px;
+  margin-top: 40px;
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 7px;
+}
+#red {
+  display: flex;
+  background-color: rgb(255, 32, 77);
+  border-radius: 55%;
+  width: 300px;
+}
+#green {
+    background-color: limegreen;
+  border-radius: 55%;
+  width: 300px;
+}
+
+#yellow {
+  background: gold;
+  border-radius: 55%;
+  width: 300px;
+}
+#blue {
+  background: skyblue;
+  border-radius: 55%;
+  width: 300px;
+}
+#blue:active{
+    background-color: blue
+}
+#green:active{
+    background-color: forestgreen
+}
+#yellow:active{
+    background-color: orange;
+}
+#red:active{
+    background-color: rgb(175, 2, 2);
+}
