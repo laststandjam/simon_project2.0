@@ -29,12 +29,28 @@ function init() {
     playerPattern = []
     rounds = 0
 }
-init()
 function newGame() {
     currentPattern = []
     playerPattern = []
     rounds = 0
 }
+function randomizer(){
+    let i = Math.floor(Math.random() * colors.length)
+    console.log(colors[i])
+    currentPattern.push(colors[i])
+}
+var flashLights = function(arr) {
+    let i = 0;
+  
+    let interval = setInterval(function() {
+      $("#" + currentPattern[i]).fadeTo("slow", 0).fadeTo("slow", 1);
+      //$("#sound-" + currentPattern[i])[0].play();
+      i++;
+      if (i >= currentPattern.length) {
+        clearInterval(interval);
+      }
+    }, 1500);
+  };
 
 function track(){
     playerPattern.push(event.target.id)
