@@ -1,5 +1,5 @@
 //const
-const colors = ["#red","#yellow", "#green", "#blue"]
+const colors = ["red","yellow", "green", "blue"]
 
 //cached
 
@@ -9,6 +9,12 @@ let currentPattern,
     rounds
 
 
+//listernes
+red.addEventListener("click", playerMove)
+yellow.addEventListener("click", playerMove)
+green.addEventListener("click", playerMove)
+blue.addEventListener("click", playerMove)
+startButton.addEventListener("click", startPlay)
 //functions
 function newGame() {
     currentPattern = []

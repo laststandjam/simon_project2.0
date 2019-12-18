@@ -46,19 +46,4 @@ body {
     width: 300px;
     opacity : 0.6;
   }
-  #red:hover{
-    color: crimson;
-  }
-  
-  #yellow:active{
-    color: yellow
-  }
-  
-  #green:hover{
-   color: limegreen;
-  }
-  
-  
-  #blue:hover {
-    color: blue;
-  }
+ 
