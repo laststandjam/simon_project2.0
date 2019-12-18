@@ -39,12 +39,10 @@ function randomizer(){
     console.log(colors[i])
     currentPattern.push(colors[i])
 }
-var flashLights = function(arr) {
+ function blinker() {
     let i = 0;
-  
     let interval = setInterval(function() {
       $("#" + currentPattern[i]).fadeTo("slow", 0).fadeTo("slow", 1);
-      //$("#sound-" + currentPattern[i])[0].play();
       i++;
       if (i >= currentPattern.length) {
         clearInterval(interval);
@@ -54,4 +52,28 @@ var flashLights = function(arr) {
 
 function track(){
     playerPattern.push(event.target.id)
+    if(playerPattern.length === currentPattern.length){
+    judger()
+    }
 }
+function updateRounds(){
+    ++rounds
+    $(`#rounds`).html = rounds
+}
+function judger(){
+    if(currentPattern.length === playerPattern.length)
+        for(let i =0; i<playerPattern.length; i++){
+            if( playerPattern[i] !== currentPattern[i])
+            console.log("you lose")
+            }
+            playerPattern= []
+            updateRounds()
+            randomizer()
+            blinker()
+    }
+function startGame(){
+    updateRounds()
+    randomizer()
+    blinker()
+}
+startGame()
