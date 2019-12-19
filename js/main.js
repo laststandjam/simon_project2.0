@@ -49,7 +49,7 @@ function randomizer() {
 
 function blinker() {
   let i = 0;
-  if(won || lost){
+  if(lost){
       return true
   }
   let interval = setInterval(function() {
