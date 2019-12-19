@@ -57,29 +57,44 @@ function randomizer(){
 
 function track(){
     playerPattern.push(event.target.id)
-    if(playerPattern.length === currentPattern.length){
     judger()
+    if(playerPattern.length === currentPattern.length){
+    newRound()
     }
 }
 function updateRounds(){
     ++roundCounter
     rounds.innerText = roundCounter
 }
-function judger(){
-    if(currentPattern.length === playerPattern.length)
-        for(let i =0; i<playerPattern.length; i++){
-            if( playerPattern[i] !== currentPattern[i])
-           headerText.innerText ="You lose Press Start to play again"
-           
-            }
-            playerPattern= []
-            updateRounds()
-            randomizer()
-            blinker()
+
+function judger() {
+    for(let i = 0; i<playerPattern.length; i++){
+        if(currentPattern[i] !== playerPattern){
+            headerText.innerText ="You lose Press Start to play again"
+            init()
+        }
     }
+}
+// function judger(){
+//     if(currentPattern.length === playerPattern.length)
+//         for(let i =0; i<playerPattern.length; i++){
+//             if( playerPattern[i] !== currentPattern[i])
+//            headerText.innerText ="You lose Press Start to play again"
+           
+//             }
+//             playerPattern= []
+//             updateRounds()
+//             randomizer()
+//             blinker()
+//     }
 function startGame(){
     headerText.innerText= "Follow The Colors"
     updateRounds()
+    randomizer()
+    blinker()
+}
+function  newRound(){
+    updateRounds();
     randomizer()
     blinker()
 }
