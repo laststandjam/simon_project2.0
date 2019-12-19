@@ -11,7 +11,11 @@ var rounds = document.getElementById("rounds");
 var startButton = document.getElementById("gameStart");
 var headerText = document.getElementById("gameMessage");
 //state
-let currentPattern, playerPattern, roundCounter, lost, won;
+let currentPattern = [],
+  playerPattern,
+  roundCounter,
+  lost,
+  won;
 
 //listernes
 red.addEventListener("click", track);
@@ -29,7 +33,8 @@ function init() {
   roundCounter = 0;
   won = false;
   lost = false;
-  rounds.innerText = roundCounter
+  rounds.innerText = roundCounter;
+  headerText.innerText = "Press Play to start";
 }
 function newGame() {
   currentPattern = [];
@@ -37,15 +42,11 @@ function newGame() {
   roundCounter = 1;
 }
 function randomizer() {
- if(lost ){
-     lost = false
-     return init()
-     } else{ 
-let i = Math.floor(Math.random() * colors.length);
+  let i = Math.floor(Math.random() * colors.length);
   console.log(colors[i]);
   currentPattern.push(colors[i]);
-    }
 }
+
 function blinker() {
   let i = 0;
   let interval = setInterval(function() {
@@ -60,50 +61,54 @@ function blinker() {
 }
 
 function track() {
-    {
-    playerPattern.push(event.target.id);
-    judger();
-    if (playerPattern.length === currentPattern.length) {
-        newRound();
+  if (lost) {
+    return;
+  }
+  playerPattern.push(event.target.id);
+  judger();
+  if (playerPattern.length === currentPattern.length) {
+    newRound();
   }
 }
-}
-  
-  function updateRound() {
-    ++roundCounter;
-    rounds.innerText = roundCounter;
-  }
 
+function updateRound() {
+  rounds.innerText = currentPattern.length + 1;
+}
 
 function judger() {
   for (let i = 0; i < playerPattern.length; i++) {
     if (currentPattern[i] !== playerPattern[i]) {
-        lost = true
+      lost = true;
       headerText.innerText = "You lose Press Start to play again";
-      return init();
-    
-    }else if(playerPattern.length === 10){
-        won = true
-        headerText.innerText = "You win see how high you can go or start a new game"
+      return;
+    } else if (playerPattern.length === 10) {
+      won = true;
+      headerText.innerText =
+        "You win see how high you can go or start a new game";
     }
   }
 }
 function startGame() {
-  headerText.innerText = "Follow The Colors";
-   if(lost){
-      return init()
+  if (lost) {
+    headerText.innerText = "Follow The Colors";
+    newGame();
+    return init();
   }
-  if(won){
-    return init() }
-  updateRound();
+  if (won) {
+    headerText.innerText = "Follow The Colors";
+    newGame();
+    return init();
+  }
+  headerText.innerText = "Follow The Colors";
+  roundCounter = 1;
+  rounds.innerText = roundCounter;
+  newGame();
   randomizer();
   blinker();
- 
-
 }
 function newRound() {
   updateRound();
   randomizer();
   blinker();
-  playerPattern = []
+  playerPattern = [];
 }

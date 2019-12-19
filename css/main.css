@@ -24,7 +24,7 @@ h1 {
   margin-left: 75px;
 }
 #green {
-    background-color: limegreen;
+  background-color: limegreen;
   border-radius: 55%;
   width: 300px;
 }
@@ -41,15 +41,15 @@ h1 {
   width: 300px;
   margin-left: 75px;
 }
-#blue:active{
-    background-color: blue
+#blue:active {
+  background-color: blue;
 }
-#green:active{
-    background-color: forestgreen
+#green:active {
+  background-color: forestgreen;
 }
-#yellow:active{
-    background-color: orange;
+#yellow:active {
+  background-color: orange;
 }
-#red:active{
-    background-color: rgb(175, 2, 2);
+#red:active {
+  background-color: rgb(175, 2, 2);
 }
