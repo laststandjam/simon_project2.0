@@ -11,7 +11,7 @@ var rounds = document.getElementById("rounds");
 var startButton = document.getElementById("gameStart");
 var headerText = document.getElementById("gameMessage");
 //state
-let currentPattern, playerPattern, roundCounter, lost;
+let currentPattern, playerPattern, roundCounter, lost, won;
 
 //listernes
 red.addEventListener("click", track);
@@ -27,6 +27,8 @@ function init() {
   currentPattern = [];
   playerPattern = [];
   roundCounter = 0;
+  won = false;
+  lost = false;
   rounds.innerText = roundCounter
 }
 function newGame() {
@@ -36,12 +38,13 @@ function newGame() {
 }
 function randomizer() {
  if(lost ){
-     return lost = false
-     roundCounter = 0
- }  
+     lost = false
+     return init()
+     } else{ 
 let i = Math.floor(Math.random() * colors.length);
   console.log(colors[i]);
   currentPattern.push(colors[i]);
+    }
 }
 function blinker() {
   let i = 0;
@@ -78,30 +81,25 @@ function judger() {
         lost = true
       headerText.innerText = "You lose Press Start to play again";
       return init();
-      break
+    
+    }else if(playerPattern.length === 10){
+        won = true
+        headerText.innerText = "You win see how high you can go or start a new game"
     }
   }
 }
-// function judger(){
-//     if(currentPattern.length === playerPattern.length)
-//         for(let i =0; i<playerPattern.length; i++){
-//             if( playerPattern[i] !== currentPattern[i])
-//            headerText.innerText ="You lose Press Start to play again"
-
-//             }
-//             playerPattern= []
-//             updateRounds()
-//             randomizer()
-//             blinker()
-//     }
 function startGame() {
   headerText.innerText = "Follow The Colors";
+   if(lost){
+      return init()
+  }
+  if(won){
+    return init() }
   updateRound();
   randomizer();
   blinker();
-  if(lost){
-      return init()
-  }
+ 
+
 }
 function newRound() {
   updateRound();
