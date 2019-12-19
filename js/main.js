@@ -27,6 +27,7 @@ function init() {
   currentPattern = [];
   playerPattern = [];
   roundCounter = 0;
+  rounds.innerText = roundCounter
 }
 function newGame() {
   currentPattern = [];
@@ -34,7 +35,11 @@ function newGame() {
   roundCounter = 1;
 }
 function randomizer() {
-  let i = Math.floor(Math.random() * colors.length);
+ if(lost ){
+     return lost = false
+     roundCounter = 0
+ }  
+let i = Math.floor(Math.random() * colors.length);
   console.log(colors[i]);
   currentPattern.push(colors[i]);
 }
@@ -52,14 +57,13 @@ function blinker() {
 }
 
 function track() {
-    if(lost){
-        return init()
-    }
-  playerPattern.push(event.target.id);
-  judger();
-  if (playerPattern.length === currentPattern.length) {
-   newRound();
+    {
+    playerPattern.push(event.target.id);
+    judger();
+    if (playerPattern.length === currentPattern.length) {
+        newRound();
   }
+}
 }
   
   function updateRound() {
@@ -74,6 +78,7 @@ function judger() {
         lost = true
       headerText.innerText = "You lose Press Start to play again";
       return init();
+      break
     }
   }
 }
