@@ -49,6 +49,9 @@ function randomizer() {
 
 function blinker() {
   let i = 0;
+  if(won || lost){
+      return true
+  }
   let interval = setInterval(function() {
     $("#" + currentPattern[i])
       .fadeTo("slow", 0)
@@ -64,6 +67,7 @@ function track() {
   if (lost) {
     return;
   }
+
   playerPattern.push(event.target.id);
   judger();
   if (playerPattern.length === currentPattern.length) {
