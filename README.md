@@ -10,7 +10,7 @@ Simon is a pattern memorization game. Every round colors flash and you must reme
 
 ### Instructions 
 Wait for the computer to flash out the pattern then try to copy it
-https://brave-curran-75b15f.netlify.com/
+https://goofy-brown-2b105a.netlify.com
 
 
 ### Futre
