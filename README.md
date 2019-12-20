@@ -2,7 +2,7 @@
 ### About
 Simon is a pattern memorization game. Every round colors flash and you must remember and copy the pattern. After every round the pattern increases by one.
 ![startgame](screenshoots/start.png)
-![blinker](screenshoots/flash.png)
+![blinker](screenshoots/flash.pngg)
 ### Tech
 *Javascript (Jquery), 
 *Css
