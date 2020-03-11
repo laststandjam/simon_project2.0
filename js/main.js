@@ -35,6 +35,7 @@ function init() {
   lost = false;
   rounds.innerText = roundCounter;
   headerText.innerText = "Press Play to start";
+  
 }
 function newGame() {
   currentPattern = [];
@@ -45,6 +46,7 @@ function randomizer() {
   let i = Math.floor(Math.random() * colors.length);
   console.log(colors[i]);
   currentPattern.push(colors[i]);
+  
 }
 
 function blinker() {
@@ -61,6 +63,7 @@ function blinker() {
       clearInterval(interval);
     }
   }, 1500);
+  
 }
 
 function track() {
@@ -72,6 +75,7 @@ function track() {
   judger();
   if (playerPattern.length === currentPattern.length) {
     newRound();
+
   }
 }
 
@@ -111,8 +115,10 @@ function startGame() {
   blinker();
 }
 function newRound() {
+   playerPattern = [];
+  
   updateRound();
   randomizer();
   blinker();
-  playerPattern = [];
+ 
 }
