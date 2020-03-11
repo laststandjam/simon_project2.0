@@ -15,7 +15,8 @@ let currentPattern = [],
   playerPattern,
   roundCounter,
   lost,
-  won;
+  won,
+  playerTurn;
 
 //listernes
 red.addEventListener("click", track);
@@ -35,6 +36,8 @@ function init() {
   lost = false;
   rounds.innerText = roundCounter;
   headerText.innerText = "Press Play to start";
+  playerTurn = false
+  
   
 }
 function newGame() {
@@ -44,12 +47,11 @@ function newGame() {
 }
 function randomizer() {
   let i = Math.floor(Math.random() * colors.length);
-  console.log(colors[i]);
   currentPattern.push(colors[i]);
   
 }
 
-function blinker() {
+async function  blinker () {
   let i = 0;
   if(lost){
       return true
@@ -60,20 +62,25 @@ function blinker() {
       .fadeTo("slow", 1);
     i++;
     if (i >= currentPattern.length) {
+      playerTurn= true
       clearInterval(interval);
     }
   }, 1500);
-  
+   playerTurn=true
+ 
 }
 
 function track() {
   if (lost) {
     return;
   }
-
+  if (!playerTurn){
+    console.log('wait your turn!!')
+  }
   playerPattern.push(event.target.id);
   judger();
   if (playerPattern.length === currentPattern.length) {
+    console.log(playerTurn)
     newRound();
 
   }
@@ -112,13 +119,14 @@ function startGame() {
   rounds.innerText = roundCounter;
   newGame();
   randomizer();
-  blinker();
+  blinker()
 }
 function newRound() {
    playerPattern = [];
-  
+  playerTurn=false
   updateRound();
   randomizer();
   blinker();
+  playerTurn=true
  
 }
